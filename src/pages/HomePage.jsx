@@ -17,7 +17,6 @@ const HomePage = () => {
       flexDirection="column"
       p={4}
     >
-      {/* ЛОГОТИП */}
       <Image
         src={Logo}
         alt="Monstry Logo"
@@ -25,7 +24,6 @@ const HomePage = () => {
         mb={4}
       />
 
-      {/* СЛОГАН */}
       <Image
         src={Slogan}
         alt="Become a monster"
@@ -33,7 +31,6 @@ const HomePage = () => {
         mb={10}
       />
 
-      {/* КНОПКИ */}
           <div className="slime-btn-start" onClick={() => navigate("/login")}></div>
           <div className="slime-btn-about" onClick={() => navigate("/login")}></div>
       <VStack spacing={4}>

@@ -9,7 +9,7 @@ export default function CreateBoardModal({ onClose, onCreated }) {
     const createBoard = async () => {
   if (!boardName.trim()) return;
 
-  const response = await fetch("http://localhost:8080/boards/create", {
+  const response = await fetch("https://to-do-list-project-63o5.onrender.com/boards/create", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

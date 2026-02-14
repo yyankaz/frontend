@@ -19,7 +19,7 @@ export default function EditBoardModal({ board, onClose, onUpdated }) {
       console.log("sending color:", color);
   if (!boardName.trim()) return;
 
-  const response = await fetch(`http://localhost:8080/boards/${board.id}`, {
+  const response = await fetch(`https://to-do-list-project-63o5.onrender.com/boards/${board.id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

@@ -19,7 +19,7 @@ export default function BoardsPage() {
  * @returns {Promise<void>}
  */
 const deleteBoard = async (boardId) => {
-  await fetch(`http://localhost:8080/boards/${boardId}`, {
+  await fetch(`https://to-do-list-project-63o5.onrender.com/boards/${boardId}`, {
     method: "DELETE",
     credentials: "include",
   });
@@ -31,7 +31,7 @@ const deleteBoard = async (boardId) => {
 
   useEffect(() => {
     const fetchBoards = async () => {
-      const response = await fetch("http://localhost:8080/boards/all", {
+      const response = await fetch("https://to-do-list-project-63o5.onrender.com/boards/all", {
         credentials: "include", 
       });
 
@@ -47,7 +47,7 @@ const deleteBoard = async (boardId) => {
   }, [navigate]);
 
     const logout = async () => {
-  const response = await fetch("https://localhost:8080/logout", {
+  const response = await fetch("https://to-do-list-project-63o5.onrender.com/logout", {
     method: "POST",
     credentials: "include",
   });

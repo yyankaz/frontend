@@ -22,7 +22,7 @@ export default function RegisterPage() {
   const register = async () => {
   if (password !== confirmPassword) return;
 
-  const response = await fetch("http://localhost:8080/user/register", {
+  const response = await fetch("https://to-do-list-project-63o5.onrender.com/user/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -37,7 +37,7 @@ export default function RegisterPage() {
   if (response.ok) {
     navigate("/login"); 
   } else {
-    alert("Ошибка регистрации");
+    alert("Registration error.");
   }
 };
 

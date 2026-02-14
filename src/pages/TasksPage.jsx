@@ -27,7 +27,7 @@ const MotionBox = motion(Box);
  * @returns {Promise<void>}
  */
 useEffect(() => {
-  fetch(`http://localhost:8080/boards/${boardId}`, {
+  fetch(`https://to-do-list-project-63o5.onrender.com/boards/${boardId}`, {
     credentials: "include",
   })
     .then(res => res.json())
@@ -40,7 +40,7 @@ useEffect(() => {
  * @returns {Promise<void>}
  */
 useEffect(() => {
-  fetch(`http://localhost:8080/tasks/board/${boardId}`, {
+  fetch(`https://to-do-list-project-63o5.onrender.com/tasks/board/${boardId}`, {
     credentials: "include",
   })
     .then(res => res.json())
@@ -58,7 +58,7 @@ useEffect(() => {
 const toggleTaskFinished = async (taskId) => {
 
   const response = await fetch(
-    `http://localhost:8080/tasks/${taskId}/toggle`,
+    `https://to-do-list-project-63o5.onrender.com/tasks/${taskId}/toggle`,
     {
       method: "PATCH",
       credentials: "include",
@@ -85,7 +85,7 @@ const toggleTaskFinished = async (taskId) => {
  * @returns {Promise<void>}
  */
 const deleteTask = async (taskId) => {
-  await fetch(`http://localhost:8080/tasks/${taskId}`, {
+  await fetch(`https://to-do-list-project-63o5.onrender.com/tasks/${taskId}`, {
     method: "DELETE",
     credentials: "include",
   });

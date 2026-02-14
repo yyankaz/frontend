@@ -17,7 +17,7 @@ export default function EditTaskModal({ task, onClose, onUpdated }) {
     if (!taskDescription.trim()) return;
 
     const response = await fetch(
-      `http://localhost:8080/tasks/${task.id}`,
+      `https://to-do-list-project-63o5.onrender.com/tasks/${task.id}`,
       {
         method: "PUT",
         headers: {

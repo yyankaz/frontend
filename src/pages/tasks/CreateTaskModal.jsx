@@ -9,7 +9,7 @@ export default function CreateTaskModal({ boardId, onClose, onCreated }) {
   const createTask = async () => {
   if (!taskDescription.trim()) return;
 
-  const response = await fetch("http://localhost:8080/tasks/create", {
+  const response = await fetch("https://to-do-list-project-63o5.onrender.com/tasks/create", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
