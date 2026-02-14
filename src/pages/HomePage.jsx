@@ -1,4 +1,4 @@
-import { Box, Button, VStack, Image, Text } from "@chakra-ui/react";
+import { Box, VStack, Image} from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import "./HomePage.css";
 import Logo from "../assets/Monstry_logo_01.png";
