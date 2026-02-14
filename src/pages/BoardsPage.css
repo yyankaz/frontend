@@ -1,0 +1,127 @@
+.board-page {
+  min-height: 100vh;
+  background-image: url('../assets/Background_light_white.png'); /* путь к твоей картинке */
+  background-size: cover;        /* картинка растягивается на весь экран */
+  background-repeat: no-repeat;  /* не повторяется */
+  background-position: center;   /* по центру */
+}
+
+.slime-btn-new-board {
+  width: 180px;
+  height: 110px;
+  background-image: url('../assets/Button_new_board.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.board {
+  width: 339px;
+  height: 318px;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;     
+  justify-content: center;  
+  font-weight: 600;
+  font-size: 20px;
+  text-align: center;      
+  padding: 80px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.board:hover {
+  transform: translateY(-15px);
+}
+
+.boards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(120px, 3fr));
+  gap: 100px;
+  padding: 32px;
+}
+
+.board-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.board-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.board--pink {
+  background-image: url("/src/assets/Board_01.png");
+   color: rgb(166, 41, 99);
+  text-shadow: 0 2px 6px rgba(104, 18, 67, 0.565);
+}
+
+.board--orange {
+  background-image: url("/src/assets/Board_02.png");
+  color: rgb(204, 108, 34);
+  text-shadow: 0 2px 6px rgba(104, 44, 18, 0.565);
+}
+
+.board--yellow {
+  background-image: url("/src/assets/Board_03.png");
+  color: rgb(167, 146, 27);
+  text-shadow: 0 2px 6px rgba(156, 143, 48, 0.565);
+}
+
+.board--green {
+  background-image: url("/src/assets/Board_04.png");
+  color: rgb(57, 133, 19);
+  text-shadow: 0 2px 6px rgba(7, 86, 7, 0.565);
+}
+
+.board--blue {
+  background-image: url("/src/assets/Board_05.png");
+  color: rgb(35, 63, 141);
+  text-shadow: 0 2px 6px rgba(28, 18, 104, 0.565);
+}
+
+.board--purple {
+  background-image: url("/src/assets/Board_06.png");
+  color: rgb(84, 38, 136);
+  text-shadow: 0 2px 6px rgba(43, 11, 88, 0.565);
+}
+
+.btn-delete-board {
+  width: 45px;
+  height: 45px;
+  background-image: url('../assets/Button_delete.png');
+  background-size: contain;
+  margin-left: auto;  
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-edit-board {
+  width: 45px;
+  height: 45px;
+  background-image: url('../assets/Button_update.png');
+  background-size: contain;
+  margin-left: auto;  
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-log-out {
+  width: 86px;
+  height: 41px;
+  background-image: url('../assets/Arrow_sign_out.png');
+  background-size: contain;
+  margin-left: auto;  
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: 0.2s ease;
+}

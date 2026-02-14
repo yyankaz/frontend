@@ -1,0 +1,17 @@
+.login-page {
+  min-height: 100vh;
+  background-image: url('../assets/Background_purple.png'); /* путь к твоей картинке */
+  background-size: cover;        /* картинка растягивается на весь экран */
+  background-repeat: no-repeat;  /* не повторяется */
+  background-position: center;   /* по центру */
+}
+
+.slime-btn-log_in {
+  width: 200px;
+  height: 90px;
+  background-image: url('../assets/Button_log_in.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: 0.2s ease;
+}

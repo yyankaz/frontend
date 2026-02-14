@@ -1,0 +1,20 @@
+.register-page {
+  min-height: 100vh;
+  background-image: url('../assets/Background_blue.png'); /* путь к твоей картинке */
+  background-size: cover;        /* картинка растягивается на весь экран */
+  background-repeat: no-repeat;  /* не повторяется */
+  background-position: center;   /* по центру */
+}
+.slime-btn-sign-up {
+  width: 200px;
+  height: 90px;
+  background-image: url('../assets/Button_sign_up.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+.slime-btn-sign-up.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

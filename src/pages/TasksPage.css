@@ -1,0 +1,113 @@
+.background {
+  min-height: 100vh;
+  background-size: cover;        
+  background-repeat: no-repeat;  
+  background-position: center;  
+}
+.back--pink {
+  background-image: url('../assets/Background_light_pink.png'); 
+}
+
+.back--orange {
+  background-image: url('../assets/Background_light_orange.png'); 
+}
+
+.back--yellow {
+  background-image: url('../assets/Background_light_yellow.png'); 
+}
+
+.back--green {
+  background-image: url('../assets/Background_light_green.png'); 
+}
+
+.back--blue {
+  background-image: url('../assets/Background_light_blue.png'); 
+}
+
+.back--purple {
+  background-image: url('../assets/Background_light_violet.png'); 
+}
+
+.slime-btn-new-task {
+  width: 180px;
+  height: 110px;
+  background-image: url('../assets/Button_new_task.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  margin-bottom: 18px;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.task-item:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.task-icon {
+  width: 61px;
+  height: 48.5px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.task-item.finished .task-icon {
+  width: 59.3px;
+  height: 50.2px;
+  background-image: url('../assets/Task_complite.png'); 
+}
+
+.task-item:not(.finished) .task-icon {
+  width: 61px;
+  height: 48.5px;
+  background-image: url('../assets/Task_uncomplite.png'); 
+}
+
+.task-text {
+  margin-left: 10px;
+  font-weight: 600;
+  color: black;
+}
+
+.task-item.finished .task-text {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.task-actions {
+  display: flex;
+  gap: 8px;
+  margin-left: auto; 
+}
+
+.btn-delete {
+  width: 45px;
+  height: 45px;
+  background-image: url('../assets/Button_delete.png');
+  background-size: contain;
+  margin-left: auto;  
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-edit {
+  width: 45px;
+  height: 45px;
+  background-image: url('../assets/Button_update.png');
+  background-size: contain;
+  margin-left: auto;  
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: 0.2s ease;
+}

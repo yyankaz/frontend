@@ -1,0 +1,35 @@
+.home-page {
+  min-height: 100vh;
+  background-image: url('../assets/Background_light_white.png'); /* путь к твоей картинке */
+  background-size: cover;        /* картинка растягивается на весь экран */
+  background-repeat: no-repeat;  /* не повторяется */
+  background-position: center;   /* по центру */
+}
+
+.slime-btn-start {
+  width: 400px;
+  height: 192px;
+  background-image: url('../assets/HomePage_Start_Button_02.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.slime-btn-start:hover {
+  background-image: url('../assets/HomePage_Start_Button_03.png');
+}
+
+.slime-btn-about {
+  width: 250px;
+  height: 120px;
+  background-image: url('../assets/HomePage_AboutProject_button_02.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.slime-btn-about:hover {
+  background-image: url('../assets/HomePage_AboutProject_button_03.png');
+}
