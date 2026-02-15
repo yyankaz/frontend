@@ -10,13 +10,16 @@ export default function CreateBoardModal({ onClose, onCreated }) {
   if (!boardName.trim()) return;
 
   const response = await fetch("/boards/create", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer " + localStorage.getItem("token"),
-    },
-    body: JSON.stringify(data),
-  });
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify({
+          boardName,
+          color,
+        }),
+    });
 
   if (response.ok) {
     const createdBoard = await response.json();
