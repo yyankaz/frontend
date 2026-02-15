@@ -45,7 +45,7 @@ useEffect(() => {
   return res.json();
 })
     .then(data => setBoard(data));
-}, [boardId]);
+}, [boardId, navigate]);
 
 /**
  * Returns array of tasks using boardId
@@ -73,7 +73,7 @@ useEffect(() => {
         console.log("tasks:", data);
         setTasks(Array.isArray(data) ? data : []);
       });;
-}, [boardId]);
+}, [boardId, navigate]);
 
 /**
  * Toggles task completion status
