@@ -21,17 +21,16 @@ const [password, setPassword] = useState("");
     params.append("username", username);
     params.append("password", password);
 
-    const response = await fetch("https://to-do-list-project-63o5.onrender.com/login", {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-      body: new URLSearchParams({
-        username: login,
-        password: password,
-      }),
-    });
+    const response = await fetch("/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      const token = await response.text();
+      localStorage.setItem("token", token);
 
     if (response.ok) {
       navigate("/boards/all");

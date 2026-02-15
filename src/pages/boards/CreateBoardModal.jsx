@@ -9,16 +9,13 @@ export default function CreateBoardModal({ onClose, onCreated }) {
     const createBoard = async () => {
   if (!boardName.trim()) return;
 
-  const response = await fetch("https://to-do-list-project-63o5.onrender.com/boards/create", {
+  const response = await fetch("/boards/create", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("token"),
     },
-    credentials: "include",
-    body: JSON.stringify({
-      boardName,
-      color,
-    }),
+    body: JSON.stringify(data),
   });
 
   if (response.ok) {
