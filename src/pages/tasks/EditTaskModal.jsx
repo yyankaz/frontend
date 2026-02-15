@@ -21,9 +21,9 @@ export default function EditTaskModal({ task, onClose, onUpdated }) {
       {
         method: "PUT",
         headers: {
-          "Content-Type": "application/json",
-        },
-        credentials: "include",
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem("token"),
+          },
         body: JSON.stringify({
           taskDescription,
         }),

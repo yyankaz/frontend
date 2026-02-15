@@ -25,9 +25,8 @@ export default function RegisterPage() {
   const response = await fetch("https://to-do-list-project-63o5.onrender.com/user/register", {
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     },
-    credentials: "include",
     body: JSON.stringify({
       username,
       password,

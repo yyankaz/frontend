@@ -21,7 +21,9 @@ export default function BoardsPage() {
 const deleteBoard = async (boardId) => {
   await fetch(`https://to-do-list-project-63o5.onrender.com/boards/${boardId}`, {
     method: "DELETE",
-    credentials: "include",
+       headers: {
+      "Authorization": "Bearer " + localStorage.getItem("token"),
+    },
   });
 
   setBoards(boards.filter(b => b.id !== boardId));
@@ -32,7 +34,9 @@ const deleteBoard = async (boardId) => {
   useEffect(() => {
     const fetchBoards = async () => {
       const response = await fetch("https://to-do-list-project-63o5.onrender.com/boards/all", {
-        credentials: "include", 
+            headers: {
+      "Authorization": "Bearer " + localStorage.getItem("token"),
+    },
       });
 
       if (response.ok) {
@@ -46,17 +50,9 @@ const deleteBoard = async (boardId) => {
     fetchBoards();
   }, [navigate]);
 
-    const logout = async () => {
-  const response = await fetch("https://to-do-list-project-63o5.onrender.com/logout", {
-    method: "POST",
-    credentials: "include",
-  });
-
-  if (response.ok) {
-    window.location.href = "/login";
-  } else {
-    console.error("Logout failed");
-  }
+const logout = () => {
+  localStorage.removeItem("token");
+  window.location.href = "/login";
 };
 
   return (

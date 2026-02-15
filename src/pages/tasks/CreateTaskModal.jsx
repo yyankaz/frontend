@@ -11,10 +11,10 @@ export default function CreateTaskModal({ boardId, onClose, onCreated }) {
 
   const response = await fetch("https://to-do-list-project-63o5.onrender.com/tasks/create", {
     method: "POST",
-    headers: {
+   headers: {
       "Content-Type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("token"),
     },
-    credentials: "include",
     body: JSON.stringify({
       taskDescription,
       finished,

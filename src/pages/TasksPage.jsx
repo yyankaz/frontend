@@ -28,9 +28,21 @@ const MotionBox = motion(Box);
  */
 useEffect(() => {
   fetch(`https://to-do-list-project-63o5.onrender.com/boards/${boardId}`, {
-    credentials: "include",
+             headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("token"),
+    }
   })
-    .then(res => res.json())
+    .then(res => {
+  if (!res.ok) {
+    if (res.status === 401) {
+      localStorage.removeItem("token");
+      navigate("/login");
+    }
+    throw new Error("Request failed");
+  }
+  return res.json();
+})
     .then(data => setBoard(data));
 }, [boardId]);
 
@@ -41,9 +53,21 @@ useEffect(() => {
  */
 useEffect(() => {
   fetch(`https://to-do-list-project-63o5.onrender.com/tasks/board/${boardId}`, {
-    credentials: "include",
+       headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("token"),
+    }
   })
-    .then(res => res.json())
+    .then(res => {
+  if (!res.ok) {
+    if (res.status === 401) {
+      localStorage.removeItem("token");
+      navigate("/login");
+    }
+    throw new Error("Request failed");
+  }
+  return res.json();
+})
     .then(data => {
         console.log("tasks:", data);
         setTasks(Array.isArray(data) ? data : []);
@@ -61,7 +85,10 @@ const toggleTaskFinished = async (taskId) => {
     `https://to-do-list-project-63o5.onrender.com/tasks/${taskId}/toggle`,
     {
       method: "PATCH",
-      credentials: "include",
+         headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("token"),
+    },
     }
   );
 
@@ -87,7 +114,10 @@ const toggleTaskFinished = async (taskId) => {
 const deleteTask = async (taskId) => {
   await fetch(`https://to-do-list-project-63o5.onrender.com/tasks/${taskId}`, {
     method: "DELETE",
-    credentials: "include",
+       headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("token"),
+    },
   });
 
   setTasks(tasks.filter(t => t.id !== taskId));
