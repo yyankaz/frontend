@@ -23,11 +23,14 @@ const [password, setPassword] = useState("");
 
     const response = await fetch("https://to-do-list-project-63o5.onrender.com/login", {
       method: "POST",
+      credentials: "include",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
-      body: params,
-      credentials: "include",
+      body: new URLSearchParams({
+        username: login,
+        password: password,
+      }),
     });
 
     if (response.ok) {
