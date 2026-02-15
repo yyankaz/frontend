@@ -4,7 +4,7 @@ import {
 } from "@chakra-ui/react";
 
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import "./TasksPage.css";
@@ -18,6 +18,7 @@ const [editingTask, setEditingTask] = useState(null);
 const [isCreateOpen, setIsCreateOpen] = useState(false);
 
 const { boardId } = useParams();
+const navigate = useNavigate();
 
 const MotionBox = motion(Box);
 
