@@ -4,6 +4,8 @@ import {
   Input,
   VStack,
   Text,
+  InputGroup, 
+  InputRightElement
 } from "@chakra-ui/react";
 
 import { useNavigate } from "react-router-dom";
@@ -15,6 +17,22 @@ export default function LoginPage() {
 const navigate = useNavigate();
 const [username, setUsername] = useState("");
 const [password, setPassword] = useState("");
+  const length_password = password.length;
+  const length_username = username.length;
+
+  const counterColor_password =
+  length_password === 0
+    ? "gray"
+    : length_password < 8
+    ? "red"
+    : "green";
+
+  const counterColor_username =
+  length_username === 0
+    ? "gray"
+    : length_username < 5
+    ? "red"
+    : "green";
 
   const login = async () => {
     const params = new URLSearchParams();
@@ -59,18 +77,37 @@ const [password, setPassword] = useState("");
         <VStack spacing={4}>
           <Heading size="md">Logging in</Heading>
 
-            <Input
+          <InputGroup>
+          <Input
             placeholder="Username"
             value={username}
+            maxLength={32}
             onChange={(e) => setUsername(e.target.value)}
           />
 
+            <InputRightElement width="39px">
+              <Text fontSize="sm" color={counterColor_username}>
+                {length_username}/{32}
+              </Text>
+            </InputRightElement>
+          </InputGroup>
+
+          <InputGroup>
           <Input
             placeholder="Password"
             type="password"
             value={password}
+            maxLength={32}
             onChange={(e) => setPassword(e.target.value)}
           />
+
+            <InputRightElement width="39px">
+              <Text fontSize="sm" color={counterColor_password}>
+                {length_password}/{32}
+              </Text>
+            </InputRightElement>
+          </InputGroup>
+
 
             <VStack spacing={1}>
               <div className="slime-btn-log_in" onClick={login}></div>

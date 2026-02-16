@@ -1,10 +1,16 @@
-import { Box, Input, VStack, Text } from "@chakra-ui/react";
+import { Box, 
+  Input, 
+  VStack, 
+  Text,
+  InputGroup, 
+  InputRightElement } from "@chakra-ui/react";
 import { useState, useEffect } from "react";
 import "./EditTaskModal.css";
 
 export default function EditTaskModal({ task, onClose, onUpdated }) {
 
   const [taskDescription, setTaskDescription] = useState("");
+  const length_taskDescription = taskDescription.length;
 
   useEffect(() => {
     if (task) {
@@ -52,11 +58,19 @@ export default function EditTaskModal({ task, onClose, onUpdated }) {
             Edit task
           </Text>
 
+          <InputGroup>
           <Input
               placeholder="Task description"
               value={taskDescription}
+              maxLength={99}
               onChange={(e) => setTaskDescription(e.target.value)}
-            />
+          />
+            <InputRightElement width="39px">
+              <Text fontSize="sm">
+                {length_taskDescription}/{99}
+              </Text>
+            </InputRightElement>
+          </InputGroup>
 
 
           <VStack spacing={4}>

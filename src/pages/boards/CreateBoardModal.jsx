@@ -1,10 +1,16 @@
-import { Box, Input, VStack, Text } from "@chakra-ui/react";
+import { Box, 
+  Input, 
+  VStack, 
+  Text,
+  InputGroup, 
+  InputRightElement } from "@chakra-ui/react";
 import { useState } from "react";
 import "./CreateBoardModal.css";
 
 export default function CreateBoardModal({ onClose, onCreated }) {
   const [boardName, setBoardName] = useState("");
   const [color, setColor] = useState("PINK");
+  const length_boardName = boardName.length;
 
     const createBoard = async () => {
   if (!boardName.trim()) return;
@@ -41,11 +47,20 @@ export default function CreateBoardModal({ onClose, onCreated }) {
             Create board
           </Text>
 
+          <InputGroup>
           <Input
               placeholder="Board title"
               value={boardName}
+              maxLength={50}
               onChange={(e) => setBoardName(e.target.value)}
-            />
+          />
+
+            <InputRightElement width="39px">
+              <Text fontSize="sm">
+                {length_boardName}/{50}
+              </Text>
+            </InputRightElement>
+          </InputGroup>
 
           <Text fontSize="sm" color="gray.500">
             Choose color

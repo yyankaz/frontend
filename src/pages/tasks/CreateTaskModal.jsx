@@ -1,10 +1,16 @@
-import { Box, Input, VStack, Text } from "@chakra-ui/react";
+import { Box, 
+  Input, 
+  VStack, 
+  Text,
+  InputGroup, 
+  InputRightElement } from "@chakra-ui/react";
 import { useState } from "react";
 import "./CreateTaskModal.css";
 
 export default function CreateTaskModal({ boardId, onClose, onCreated }) {
   const [taskDescription, setTaskDescription] = useState("");
   const [finished] = useState(false);
+  const length_taskDescription = taskDescription.length;
 
   const createTask = async () => {
   if (!taskDescription.trim()) return;
@@ -42,12 +48,19 @@ export default function CreateTaskModal({ boardId, onClose, onCreated }) {
             Create task
           </Text>
 
+          <InputGroup>
           <Input
               placeholder="Task description"
               value={taskDescription}
+              maxLength={99}
               onChange={(e) => setTaskDescription(e.target.value)}
-            />
-
+          />
+            <InputRightElement width="39px">
+              <Text fontSize="sm">
+                {length_taskDescription}/{99}
+              </Text>
+            </InputRightElement>
+          </InputGroup>
 
           <VStack spacing={4}>
             <div

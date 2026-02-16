@@ -4,6 +4,10 @@ import {
   Input,
   VStack,
   Text,
+  InputGroup, 
+  InputRightElement,
+  FormHelperText,
+  FormControl
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -18,6 +22,42 @@ export default function RegisterPage() {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const passwordsMatch = password === confirmPassword;
+  const passwordValid =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/.test(password);
+  const hasUpper = /[A-Z]/.test(password);
+  const hasLower = /[a-z]/.test(password);
+  const hasNumber = /\d/.test(password);
+  const formValid =
+  username.length >= 5 &&
+  passwordValid &&
+  password === confirmPassword;
+
+
+  const length_password = password.length;
+  const length_confirmPassword = confirmPassword.length;
+  const length_username = username.length;
+
+  const counterColor_password =
+  length_password === 0
+    ? "gray"
+    : length_password < 8
+    ? "red"
+    : "green";
+
+    const counterColor_confirmPassword =
+  length_confirmPassword === 0
+    ? "gray"
+    : length_confirmPassword < 8
+    ? "red"
+    : "green";
+
+  const counterColor_username =
+  length_username === 0
+    ? "gray"
+    : length_username < 5
+    ? "red"
+    : "green";
+
 
   const register = async () => {
   if (password !== confirmPassword) return;
@@ -58,30 +98,82 @@ export default function RegisterPage() {
         <VStack spacing={4}>
           <Heading size="md">Registration</Heading>
 
+          <FormControl>
+          <InputGroup>
           <Input
             placeholder="Username"
             value={username}
+            maxLength={32}
             onChange={(e) => setUsername(e.target.value)}
           />
 
+            <InputRightElement width="39px">
+              <Text fontSize="sm" color={counterColor_username}>
+                {length_username}/{32}
+              </Text>
+            </InputRightElement>
+          </InputGroup>
+
+            <FormHelperText fontSize="10px"  mt="2px">
+              Username should have at least 5 characters.
+            </FormHelperText>
+          </FormControl>
+
+          <FormControl>
+          <InputGroup>
           <Input
             placeholder="Password"
             type="password"
             value={password}
+            maxLength={32}
             onChange={(e) => setPassword(e.target.value)}
           />
 
+            <InputRightElement width="39px">
+              <Text fontSize="sm" color={counterColor_password}>
+                {length_password}/{32}
+              </Text>
+            </InputRightElement>
+          </InputGroup>
+            <FormHelperText fontSize="10px"  mt="2px">
+              At least 8 characters with uppercase, lowercase letters and numbers.
+            <Text color={hasUpper ? "green" : "red"}>
+              • Uppercase
+            </Text>
+            <Text color={hasLower ? "green" : "red"}>
+              • Lowercase
+            </Text>
+            <Text color={hasNumber ? "green" : "red"}>
+              • Number
+            </Text>
+            </FormHelperText>
+          </FormControl>
+
+          <FormControl>
+          <InputGroup>
           <Input
             placeholder="Confirm password"
             type="password"
             value={confirmPassword}
+            maxLength={32}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
 
+            <InputRightElement width="39px">
+              <Text fontSize="sm" color={counterColor_confirmPassword}>
+                {length_confirmPassword}/{32}
+              </Text>
+            </InputRightElement>
+          </InputGroup>
+          </FormControl>
+
           <div
-            className={`slime-btn-sign-up ${
-              !passwordsMatch || !password ? "disabled" : ""
-            }`} onClick={register}
+            className="slime-btn-sign-up"
+            onClick={formValid ? register : undefined}
+            style={{
+              opacity: formValid ? 1 : 0.5,
+              pointerEvents: formValid ? "auto" : "none",
+            }}
           ></div>
 
           {!passwordsMatch && confirmPassword && (

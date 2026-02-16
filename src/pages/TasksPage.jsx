@@ -20,6 +20,7 @@ const [isCreateOpen, setIsCreateOpen] = useState(false);
 const { boardId } = useParams();
 const navigate = useNavigate();
 
+
 const MotionBox = motion(Box);
 
 /**
