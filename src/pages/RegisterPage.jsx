@@ -7,10 +7,11 @@ import {
   InputGroup, 
   InputRightElement,
   FormHelperText,
-  FormControl
+  FormControl,
+  useToast
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import { useState, useToast } from "react";
+import { useState } from "react";
 
 import "./RegisterPage.css";
 

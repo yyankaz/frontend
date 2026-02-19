@@ -5,11 +5,12 @@ import {
   VStack,
   Text,
   InputGroup, 
-  InputRightElement
+  InputRightElement,
+  useToast
 } from "@chakra-ui/react";
 
 import { useNavigate } from "react-router-dom";
-import { useState, useToast } from "react";
+import { useState } from "react";
 
 import "./LoginPage.css";
 
