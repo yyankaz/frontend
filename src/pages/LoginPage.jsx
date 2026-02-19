@@ -15,6 +15,8 @@ import "./LoginPage.css";
 
 export default function LoginPage() {
 const navigate = useNavigate();
+const toast = useToast();
+
 const [username, setUsername] = useState("");
 const [password, setPassword] = useState("");
   const length_password = password.length;
@@ -34,28 +36,60 @@ const [password, setPassword] = useState("");
     ? "red"
     : "green";
 
-  const login = async () => {
-    const params = new URLSearchParams();
-    params.append("username", username);
-    params.append("password", password);
-
-    const response = await fetch("https://to-do-list-project-63o5.onrender.com/auth/login", {
+const login = async () => {
+  try {
+    const response = await fetch(
+      "https://to-do-list-project-63o5.onrender.com/auth/login",
+      {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({ username, password }),
-      });
+      }
+    );
 
-      const token = await response.text();
-      localStorage.setItem("token", token);
-
-    if (response.ok) {
-      navigate("/boards/all");
-    } else {
-      alert("Ошибка логина");
+    if (!response.ok) {
+      if (response.status === 401) {
+        toast({
+          title: "Invalid username or password",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      } else {
+        toast({
+          title: "Login failed",
+          status: "error",
+          duration: 3000,
+          isClosable: true,
+        });
+      }
+      return;
     }
-  };
+
+    const token = await response.text();
+    localStorage.setItem("token", token);
+
+    toast({
+      title: "Login successful",
+      status: "success",
+      duration: 2000,
+      isClosable: true,
+    });
+
+    navigate("/boards/all");
+
+  } catch (error) {
+    toast({
+      title: "Server not responding",
+      description: "Please try again later",
+      status: "error",
+      duration: 4000,
+      isClosable: true,
+    });
+  }
+};
 
 
 

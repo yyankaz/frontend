@@ -16,6 +16,7 @@ import "./RegisterPage.css";
 
 export default function RegisterPage() {
   const navigate = useNavigate();
+  const toast = useToast();
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -59,24 +60,66 @@ export default function RegisterPage() {
     : "green";
 
 
-  const register = async () => {
-  if (password !== confirmPassword) return;
+const register = async () => {
+  if (password !== confirmPassword) {
+    toast({
+      title: "Passwords do not match",
+      status: "error",
+      duration: 3000,
+      isClosable: true,
+    });
+    return;
+  }
 
-  const response = await fetch("https://to-do-list-project-63o5.onrender.com/user/register", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      username,
-      password,
-    }),
-  });
+  try {
+    const response = await fetch(
+      "https://to-do-list-project-63o5.onrender.com/user/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      }
+    );
 
-  if (response.ok) {
-    navigate("/login"); 
-  } else {
-    alert("Registration error.");
+    if (response.ok) {
+      toast({
+        title: "Registration successful",
+        status: "success",
+        duration: 2000,
+        isClosable: true,
+      });
+
+      navigate("/login");
+      return;
+    }
+
+    if (response.status === 409) {
+      toast({
+        title: "Username already exists",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      return;
+    }
+
+    toast({
+      title: "Registration failed",
+      status: "error",
+      duration: 3000,
+      isClosable: true,
+    });
+
+  } catch (error) {
+    toast({
+      title: "Server is not responding",
+      description: "Please try again later",
+      status: "error",
+      duration: 4000,
+      isClosable: true,
+    });
   }
 };
 
