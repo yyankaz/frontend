@@ -9,7 +9,7 @@ import {
 } from "@chakra-ui/react";
 
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useToast } from "react";
 
 import "./LoginPage.css";
 
